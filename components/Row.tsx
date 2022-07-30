@@ -23,6 +23,9 @@ function Row({ title, movies }: Props) {
         direction === 'left'
           ? scrollLeft - clientWidth
           : scrollLeft + clientWidth
+      if (scrollTo <= 0) {
+        setIsMoved(false)
+      }
 
       rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' })
     }
@@ -49,7 +52,7 @@ function Row({ title, movies }: Props) {
           })}
         </div>
         <ChevronRightIcon
-          className="absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100"
+          className={`absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100`}
           onClick={() => handleClick('right')}
         />
       </div>
