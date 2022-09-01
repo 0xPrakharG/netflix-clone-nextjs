@@ -3,10 +3,11 @@ import { BellIcon, SearchIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
 import useAuth from '../hooks/useAuth'
 import BasicMenu from './BasicMenu'
+import Image from 'next/image'
+import Logo from '../assets/Netflix_logo.svg'
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -24,10 +25,10 @@ function Header() {
   return (
     <header className={`${isScrolled && 'bg-[#141414]'}`}>
       <div className="flex items-center space-x-2 md:space-x-10">
-        <img
-          src="https://rb.gy/ulxxee"
-          width={100}
-          height={100}
+        <Image
+          src={Logo}
+          width={90}
+          height={30}
           className="cursor-pointer object-contain"
         />
         <BasicMenu />
@@ -42,11 +43,15 @@ function Header() {
       <div className="flex items-center font-light text-sm space-x-4">
         <SearchIcon className="hidden h-6 w-6 sm:inline " />
         <p className="hidden lg:inline">Kids</p>
-        <BellIcon className="h-6 w-6" />
+        <div className="pr-4">
+          <BellIcon className="h-6 w-6" />
+        </div>
         <Link href="/account">
-          <img
+          <Image
+            height={30}
+            width={30}
             src="https://rb.gy/g1pwyx"
-            alt=""
+            alt="account"
             className="cursor-pointer rounded"
           />
         </Link>
